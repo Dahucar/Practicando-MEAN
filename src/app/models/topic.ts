@@ -1,10 +1,11 @@
 export class Topic {
     constructor(
-        public title: String,
-        public content: String,
-        public code: String,
-        public lang: String,
-        public date: String,
+        public _id: string,
+        public title: string,
+        public content: string,
+        public code: string,
+        public lang: string,
+        public date: string,
         public user: any,
         public coments: any
     ){}

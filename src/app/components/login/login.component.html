@@ -1,1 +1,27 @@
-<p>login works!</p>
+<form class="card" #formLogin="ngForm" (submit)="onSubmit(formLogin)">
+    <div class="card-header">
+        <h2>Iniciar Sesión</h2>
+    </div>
+    <div class="card-body">
+
+        <div class="alert alert-primary" role="alert" *ngIf="mensaje != ''">
+            <strong>{{ mensaje }}</strong>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese email"
+                [(ngModel)]="user.email" #emailUser="ngModel" required autofocus>
+            <span *ngIf="emailUser.touched && !emailUser.valid" class="text-danger">Campo invalido</span>
+        </div>
+        <div class="form-group">
+            <label for="clave">Password</label>
+            <input type="password" class="form-control" id="clave" name="clave" placeholder="Ingrese clave"
+                [(ngModel)]="user.password" #claveUser="ngModel" required>
+                <span *ngIf="claveUser.touched && !claveUser.valid" class="text-danger">Campo invalido</span>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="!formLogin.valid">Iniciar</button>
+    </div>
+</form>

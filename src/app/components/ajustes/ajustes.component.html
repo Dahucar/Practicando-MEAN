@@ -1,6 +1,6 @@
 <form class="card" #formRegistro="ngForm" (ngSubmit)="onSubmit(formRegistro)">
     <div class="card-header">
-        <h2>Registrate</h2>
+        <h2>Modifica tus datos</h2>
     </div>
     <div class="card-body">
 
@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre"
-                [(ngModel)]="user.name" #nameUser="ngModel" required autofocus>
+                [(ngModel)]="user.name" #nameUser="ngModel" required>
                 <span class="text-danger" *ngIf="nameUser.touched && !nameUser.valid">Campo nombre invalido</span>
         </div>
         <div class="form-group">
@@ -26,15 +26,15 @@
                 [(ngModel)]="user.email" #emailUser="ngModel" required>
                 <span class="text-danger" *ngIf="emailUser.touched && !emailUser.valid">Campo invalido</span>
         </div>
-        <div class="form-group">
-            <label for="clave">Clave</label>
-            <input type="password" class="form-control" id="clave" name="clave" placeholder="Ingrese su clave"
-                [(ngModel)]="user.password" #passUser="ngModel" required>
-                <span class="text-danger" *ngIf="passUser.touched && !passUser.valid">Campo invalido</span>
+        <div class="custom-file">
+            <angular-file-uploader 
+                [config]="afuConfig"
+                [resetUpload]=resetVar
+                (ApiResponse)="avatarUpload($event)">
+      </angular-file-uploader>
         </div>
     </div>
     <div class="card-footer">
-        <button type="submit" class="btn btn-primary" [disabled]="!formRegistro.valid">Crear cuenta</button>
-        <button type="reset" class="btn btn-secondary m-3">Limpiar campos</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!formRegistro.valid">Actualizar</button> 
     </div>
 </form>

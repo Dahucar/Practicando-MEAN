@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">My Foro</a>
+    <a class="navbar-brand" routerLink="inicio" href="#">My Foro</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,43 +8,42 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Ver temas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Crear temas</a>
+          <a class="nav-link" routerLink="inicio">Inicio <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
           </form>
         </li>
       </ul>
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Crear cuenta <span class="sr-only">(current)</span></a>
+        <li class="nav-item active" *ngIf="!identity">
+          <a class="nav-link" routerLink="registro" href="#">Crear cuenta <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Iniciar Sesión</a>
+        <li class="nav-item" *ngIf="!identity">
+          <a class="nav-link" routerLink="login" href="#">Iniciar Sesión</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item" *ngIf="identity">
+          <div class="avatarMask">
+            <img src="{{ URL + '/avatar/' + identity.image }}" alt="">
+          </div>
+        </li>
+        <li class="nav-item dropdown" *ngIf="identity">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Datos de usuario
+            <strong>{{ identity.name +' '+ identity.surname }}</strong>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#" routerLink="panel" >Panel</a>
+            <a class="dropdown-item" href="#" routerLink="ajustes" >Configuración</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Cerrar Sesión</a>
+            <a class="dropdown-item pointer" (click)="logout()">Cerrar Sesión</a>
           </div>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-
-<router-outlet></router-outlet>
-
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

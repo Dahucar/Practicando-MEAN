@@ -1,0 +1,47 @@
+<!--
+        public _id: string,
+        public title: string,
+        public content: string,
+        public code: string,
+        public lang: string,
+        public date: string,
+        public user: any,
+        public coments: any
+-->
+
+<form class="card" #addForm="ngForm" (submit)="onSubmit(addForm)">
+    <div class="card-header">
+        <h3>Crear tu nuevo tema</h3>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="titulo">titulo</label>
+            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ingrese el titulo"
+                [(ngModel)]="topic.title" #titleTopic="ngModel" required>
+            <span class="text-danger" *ngIf="titleTopic.touched && !titleTopic.valid">Titulo invalido</span> 
+        </div>
+        <div class="form-group">
+          <label for="comentario">Comentario</label>
+          <textarea class="form-control" id="comentario" name="comentario" rows="3"
+            [(ngModel)]="topic.content" #comentTopic="ngModel" required></textarea>
+            <span class="text-danger" *ngIf="comentTopic.touched && !comentTopic.valid">Comentario invalido</span> 
+        </div> 
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="code">Codigo</label>
+                <input type="text" class="form-control" id="code" name="code" placeholder="Ingrese el codigo"
+                    [(ngModel)]="topic.code" #codeTopic="ngModel" required>
+                <span class="text-danger" *ngIf="codeTopic.touched && !codeTopic.valid">Codigo invalido</span> 
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lang">Lenguaje</label>
+                <input type="text" class="form-control" id="lang" name="lang" placeholder="Ingrese el codigo"
+                    [(ngModel)]="topic.lang" #langTopic="ngModel" required>
+                <span class="text-danger" *ngIf="langTopic.touched && !langTopic.valid">Lenguaje invalido</span> 
+            </div> 
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="!addForm.valid">Agregar</button>
+    </div>
+</form>
