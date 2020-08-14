@@ -1,0 +1,70 @@
+<ng-container *ngIf="topic">
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ topic.title }}</h3>
+        </div>
+        <div class="card-body">
+            <span class="badge badge-primary p-1">
+                {{ topic.user.name + ' ' + topic.user.surname }}
+            </span>
+            <span class="badge badge-warning p-1 ml-3">
+                {{ topic.lang }}
+            </span>
+            <p>
+                {{ topic.content }}
+            </p>
+
+            <p class="mt-2" *ngIf="topic.code && topic.lang">
+                <ngx-highlight-js lang="{{ topic.lang | lowercase }}" code="{{ topic.code }}"></ngx-highlight-js>
+            </p>
+        </div>
+    </div>
+    <div class="card-footer"> 
+        <div class="alert alert-success" role="alert" *ngIf="status">
+          <strong>{{ status }}</strong>
+        </div>
+        <form #formComent="ngForm" (ngSubmit)="comentar(formComent)" *ngIf="identity" >
+            <div class="form-group">
+                <label for="comentario">Comentar</label>
+                <textarea class="form-control" id="comentario" name="comentario" rows="3"
+                  [(ngModel)]="comment.content" #comentTopic="ngModel" required></textarea>
+                  <span class="text-danger" *ngIf="comentTopic.touched && !comentTopic.valid">Recuerda dejar tu comentario.</span> 
+            </div> 
+            <button class="btn btn-sm btn-success" [disabled]="!formComent.valid">Comentar</button>
+        </form>
+
+        <h3>Comentarios de otros usuarios</h3>
+        <ul class="list-group">
+            <li class="list-group-item mt-2" *ngFor="let coment of topic.coments">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-inline">
+                            <div class="avatarMask">
+                                <img src="{{ 'http://localhost:5000/users/avatar/' + coment.user.image }}" alt="" *ngIf="identity.image">
+                            </div>
+                        </div>
+                        <h4 class="d-inline">{{ coment.user.name +' '+ coment.user.surname }}</h4>
+                    </div>
+                </div>
+                <span class="badge badge-warning p-1 ml-3"><!--amDateFormat:'LL'-->
+                    {{ coment.date | amLocale:'es' | amTimeAgo}}
+                </span>
+                <div class="card-body">
+                    <p>{{ coment.content }}</p>
+                </div>
+            </li>   
+            <!--
+                _id: "5f35d2bcb641c3204cea8d7c" 
+                content: "comenatat" 
+                date: "2020-08-13T23:54:36.139Z" 
+                    __v: 0 
+                    _id: "5f30730cdc6e9f33b8edf60f" 
+                    email: "danielhuenul90@gmail.com" 
+                    image: "Ir2sxkxhgxqdpcpyTSlmqKyg.jpg" 
+                    name: "Daniel" 
+                    rol: "ROLE_USER" 
+                    surname: "Huenul"
+            -->
+        </ul>
+    </div>
+</ng-container>

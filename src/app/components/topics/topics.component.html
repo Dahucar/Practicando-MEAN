@@ -1,0 +1,26 @@
+<div class="col-lg-12 mt-3">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let topic of topics">
+            <h4>
+                <a routerLink="inicio">{{ topic.title}}</a>
+            </h4>
+            <span class="badge badge-primary p-2">
+                {{ topic.user.name + ' ' + topic.user.surname }}
+            </span>
+            <span class="badge badge-light ml-2">
+                {{ topic.date | amLocale:'es' | amDateFormat:'LL' }}
+            </span>
+            <a routerLink="/tema/{{ topic._id }}" class="btn btn-sm btn-success float-right mx-auto d-block">Leer</a>
+        </li>
+    </ul>
+
+    <ul class="pagination mt-3">
+        <li class="page-item"><a class="page-link" routerLink="/temas/{{prevPage}}">&laquo;</a></li>
+        <li class="page-item " *ngFor="let np of numberPages">
+            <div>
+                <a class="page-link" routerLink="/temas/{{np}}"> {{ np }}</a>
+            </div>
+        </li> 
+        <li class="page-item"><a class="page-link" routerLink="/temas/{{nextPage}}">&raquo;</a></li>
+    </ul>
+</div>

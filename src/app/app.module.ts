@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
 import { AngularFileUploaderModule } from "angular-file-uploader";
+import { MomentModule } from 'angular2-moment';
+import { NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
 import { appRouting } from '../app/app.routing'; 
 
 import { AppComponent } from './app.component';
@@ -13,6 +15,8 @@ import { AjustesComponent } from './components/ajustes/ajustes.component';
 
 import { GestionModule } from './gestion/gestion.module';
 import { PanelModule } from './panel/panel.module';
+import { TopicsComponent } from './components/topics/topics.component';
+import { TopicDetailComponent } from './components/topic-detail/topic-detail.component';
 
 /*
 import { MainComponent } from './panel/components/main/main.component';
@@ -27,7 +31,9 @@ import { EditComponent } from './panel/components/edit/edit.component';
     RegistroComponent,
     LoginComponent,
     HomeComponent,
-    AjustesComponent 
+    AjustesComponent,
+    TopicsComponent,
+    TopicDetailComponent 
   ],
   imports: [
     BrowserModule, 
@@ -36,7 +42,9 @@ import { EditComponent } from './panel/components/edit/edit.component';
     appRouting,
     FormsModule,
     HttpClientModule,
-    AngularFileUploaderModule 
+    AngularFileUploaderModule,
+    MomentModule,
+    NgxHighlightJsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

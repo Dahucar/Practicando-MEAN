@@ -12,8 +12,8 @@ const PanelRouter: Routes = [
         component: MainComponent, 
         children: [
             {path: '', component: ListComponent},
-            {path: 'listado', component: ListComponent},
             {path: 'crear', component: AddComponent},
+            {path: 'listado', component: ListComponent},
             {path: 'editar/:id', component: EditComponent}
         ]
     }
