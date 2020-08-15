@@ -53,4 +53,8 @@ export class TopicService {
         .set('Authorization', token); 
         return this._http.delete(this.url+'/topic/'+topicId, {headers: miHeaders});
     }
+
+    searchTopics(busqueda: string): Observable<any>{
+        return this._http.get(this.url+'/search/'+busqueda);
+    }
 }

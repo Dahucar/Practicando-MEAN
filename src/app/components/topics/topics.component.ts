@@ -10,6 +10,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   providers: [TopicService]
 })
 export class TopicsComponent implements OnInit {
+  public paginando: boolean = true; 
   public topics: Array<Topic>;
   public totalPges: any;
   public page: any;

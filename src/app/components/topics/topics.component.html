@@ -14,7 +14,7 @@
         </li>
     </ul>
 
-    <ul class="pagination mt-3">
+    <ul class="pagination mt-3" *ngIf="paginando">
         <li class="page-item"><a class="page-link" routerLink="/temas/{{prevPage}}">&laquo;</a></li>
         <li class="page-item " *ngFor="let np of numberPages">
             <div>

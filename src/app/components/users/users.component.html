@@ -1,0 +1,20 @@
+<div class="col-lg-12 mt-3">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let user of users">  
+            <div class="avatarMask float-left mr-3">
+                <img src="{{ URL + '/avatar/' + user.image }}" alt="" *ngIf="user.image">
+            </div>
+            <h4>
+                <a routerLink="inicio">{{ user.name +' '+ user.surname}}</a>
+            </h4> 
+            <a routerLink="/tema" class="btn btn-sm btn-success float-right mx-auto d-block">Leer</a>
+        </li>
+    </ul> 
+</div>
+<!--
+    name
+    surname
+    email
+    rol
+    image
+-->

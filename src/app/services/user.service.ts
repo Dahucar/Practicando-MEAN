@@ -52,4 +52,12 @@ export class UserService {
         .set('Authorization', this.getToken());
         return this._http.put(this.url+'/update', params, {headers: miHeaders});
     }
+
+    users(): Observable<any>{
+        return this._http.get(this.url+'/users');
+    }
+
+    user(userId: string): Observable<any>{
+        return this._http.get(this.url+'/user/'+userId);
+    }
 }

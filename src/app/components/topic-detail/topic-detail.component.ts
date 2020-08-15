@@ -43,8 +43,7 @@ export class TopicDetailComponent implements OnInit {
     this._topicService.getOneTopic(topicId).subscribe(
       response => {
         if (response.topic) {
-          this.topic = response.topic; 
-          console.log(this.topic);
+          this.topic = response.topic;  
           
         }
       },

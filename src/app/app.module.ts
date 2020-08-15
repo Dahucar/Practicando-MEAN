@@ -17,6 +17,12 @@ import { GestionModule } from './gestion/gestion.module';
 import { PanelModule } from './panel/panel.module';
 import { TopicsComponent } from './components/topics/topics.component';
 import { TopicDetailComponent } from './components/topic-detail/topic-detail.component';
+import { UsersComponent } from './components/users/users.component'; 
+
+import { UserService } from './services/user.service';
+import { UsersGuard } from './services/users.guard';
+import { NoIdentiyGuard } from './services/noIdentiy.guard';
+import { SearchComponent } from './components/search/search.component';
 
 /*
 import { MainComponent } from './panel/components/main/main.component';
@@ -33,7 +39,9 @@ import { EditComponent } from './panel/components/edit/edit.component';
     HomeComponent,
     AjustesComponent,
     TopicsComponent,
-    TopicDetailComponent 
+    TopicDetailComponent,
+    UsersComponent,
+    SearchComponent 
   ],
   imports: [
     BrowserModule, 
@@ -46,7 +54,11 @@ import { EditComponent } from './panel/components/edit/edit.component';
     MomentModule,
     NgxHighlightJsModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    UserService,
+    UsersGuard,
+    NoIdentiyGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

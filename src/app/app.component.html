@@ -14,10 +14,14 @@
           <a class="nav-link" routerLink="temas">Temas <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-          </form>
+          <a class="nav-link" routerLink="usuarios">Usuarios <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0" #formSearch="ngForm">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="busqueda" name="busqueda"
+              [(ngModel)]="searchInput" #busqueda="ngModel" (keyup)="buscar()">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="reset">X</button>
+          </form> 
         </li>
       </ul>
       <ul class="navbar-nav">
@@ -47,6 +51,6 @@
     </div>
   </div>
 </nav>
-<div class="container">
+<div class="container"> 
   <router-outlet></router-outlet>
 </div>
